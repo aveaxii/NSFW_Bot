@@ -1,18 +1,18 @@
-# Self Destructing Downloader
-This is a robot for downloading videos and images that are sent through Telegram in a self-destructing way.
+# NSFW Bot
+Это робот для загрузки видео и изображений, отправляемых через Telegram, с возможностью самоуничтожения.
 
-Robot capabilities:
-- High speed in storage
-- Sends a copy to your saved messages
-- Optimal use of resources
+Возможности робота:
+- Высокая скорость в хранилище
+- Отправляет копию сохраненных сообщений
+- Оптимальное использование ресурсов
 
-# Requirements
-- Python (3.5, 3.6, 3.7, 3.8, 3.9, 3.10)
-- Telethon (1.26.1)
+# Требуется
+- Python (3.10)
+- Telethon (Последняя версия)
 
-# Installation
+# Установка
 ```
-git clone https://github.com/mahdiashtian/self-destructing-downloader.git
+git clone https://github.com/VadimChoi/NSFW_Bot.git
 ```
 ```
 cd self-destructing-downloader
@@ -20,18 +20,18 @@ cd self-destructing-downloader
 ```
 pip install -r requirements.txt
 ```
-# Usage
+# Использование
 ```
-touch .env
+Создайте .env файл
 ```
-Open the ".env" file and copy the following information into it:
+Откройте файл «.env» и скопируйте в него следующую информацию:
 ```
-API_ID=123456
-API_HASH="35886641ed1bfaa92e7ee30er9888"
+API_ID= API_ID_ЗДЕСЬ
+API_HASH="API_HASH_ЗДЕСЬ"
 ```
-You can get these values from the my.telegram.org site.
+Эти значения можно получить на сайте my.telegram.org.
 
-Then enter the following command in the terminal and complete the authentication process:
+Затем введите в терминале следующую команду и завершите процесс аутентификации:
 ```
 python main.py
 ```
