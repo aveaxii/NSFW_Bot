@@ -5,16 +5,38 @@ from logging.handlers import RotatingFileHandler
 from decouple import config
 from telethon import TelegramClient, events, errors
 from datetime import datetime
+import os
+
+# Создание директории для логов, если она не существует
+log_dir = 'Logs'
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
 
 # Настройка логирования
-log_filename = f"logs/telegram_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
-handler = RotatingFileHandler(log_filename, maxBytes=5*1024*1024, backupCount=5)  # Файл до 5MB, сохранять 5 резервных копий
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
+log_filename = os.path.join(log_dir, f"telegram_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log")
+
+# Создание обработчика для записи в файл с уровнем DEBUG
+file_handler = RotatingFileHandler(log_filename, maxBytes=5*1024*1024, backupCount=5)
+file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(file_formatter)
+file_handler.setLevel(logging.DEBUG)  # Уровень DEBUG для файла
+
+# Создание обработчика для вывода в консоль с уровнем INFO
+console_handler = logging.StreamHandler()
+console_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(console_formatter)
+console_handler.setLevel(logging.INFO)  # Уровень INFO для консоли
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-logger.addHandler(handler)
+logger.setLevel(logging.INFO)  # Уровень INFO для общего логгера
+logger.addHandler(file_handler)
+logger.addHandler(console_handler)
+
+# Настройка логирования для Telethon
+telethon_logger = logging.getLogger("telethon")
+telethon_logger.setLevel(logging.DEBUG)  # Уровень DEBUG для Telethon логов
+telethon_logger.addHandler(file_handler)
+telethon_logger.addHandler(console_handler)
 
 # Чтение api_id и api_hash из файла конфигурации
 api_id = config('API_ID')
@@ -45,7 +67,7 @@ async def downloader(event):
         
         logger.info(f"Новое сообщение получено от {sender_info}, загрузка медиа...")
         file_path = await event.download_media()
-        logger.info(f"Путь к загруженному медиафайлу: {file_path}")
+        logger.debug(f"Путь к загруженному медиафайлу: {file_path}")  # DEBUG информация
         logger.info("Медиа загружено, отправка себе...")
         await client.send_file("me", file_path, caption="Скачано @VadimChoi")
         logger.info("Медиа успешно отправлено.")
