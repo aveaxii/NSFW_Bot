@@ -15,14 +15,19 @@
 git clone https://github.com/VadimChoi/NSFW_Bot.git
 ```
 ```
-cd self-destructing-downloader
+cd NSFW_Bot-main
 ```
 ```
 pip install -r requirements.txt
 ```
 # Использование
+Создайте пустой .env файл через CMD:
 ```
-Создайте .env файл
+type nul > .env
+```
+Или через PowerShell:
+```
+New-Item -Path ".\.env" -ItemType "File"
 ```
 Откройте файл «.env» и скопируйте в него следующую информацию:
 ```
