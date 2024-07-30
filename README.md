@@ -29,6 +29,10 @@ type nul > .env
 ```
 New-Item -Path ".\.env" -ItemType "File"
 ```
+Через Linux терминалы:
+```
+touch .env
+```
 Откройте файл «.env» и скопируйте в него следующую информацию:
 ```
 API_ID= API_ID_ЗДЕСЬ
