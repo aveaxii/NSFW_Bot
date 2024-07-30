@@ -6,7 +6,7 @@ from telethon import TelegramClient, events, errors
 
 # Настройка логирования
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)  # Установлен уровень INFO для уменьшения подробности логирования
+                    level=logging.INFO)  # Изменен уровень на INFO
 logger = logging.getLogger(__name__)
 
 # Чтение api_id и api_hash из файла конфигурации
@@ -21,9 +21,14 @@ client = TelegramClient(session_file, api_id, api_hash)
 @client.on(events.NewMessage(func=lambda e: e.is_private and (e.photo or e.video or e.document) and e.media_unread))
 async def downloader(event):
     try:
+        # Проверка, является ли отправитель сообщения тобой
+        if event.sender_id == (await client.get_me()).id:
+            logger.info("Пропускаем медиа от себя.")
+            return
+        
         logger.info("Новое сообщение получено, загрузка медиа...")
         file_path = await event.download_media()
-        logger.debug(f"Путь к загруженному медиафайлу: {file_path}")  # Это сообщение теперь не будет отображаться
+        logger.info(f"Путь к загруженному медиафайлу: {file_path}")
         logger.info("Медиа загружено, отправка себе...")
         await client.send_file("me", file_path, caption="Загружено @VadimChoi")
         logger.info("Медиа успешно отправлено.")
