@@ -29,7 +29,7 @@ type nul > .env
 ```
 New-Item -Path ".\.env" -ItemType "File"
 ```
-Либо через Linux терминалы:
+Либо через Linux/macOS терминалы:
 ```
 touch .env
 ```
