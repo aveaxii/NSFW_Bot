@@ -123,6 +123,8 @@ async def download_by_link(event):
             except Exception as e:
                 await event.respond(f"Ошибка при обработке ссылки: {e}")
                 logger.error(f"Ошибка при обработке ссылки: {e}")
+        except Exception as e:
+            logger.error(f"Ошибка при скачивании по ссылке: {e}")           
 
 async def main():
     try:
