@@ -28,7 +28,7 @@ file_handler.setLevel(logging.DEBUG)  # Уровень DEBUG для файла
 
 # Создание обработчика для вывода в консоль с уровнем DEBUG
 console_handler = logging.StreamHandler()
-console_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levellevel)s - %(message)s')
 console_handler.setFormatter(console_formatter)
 console_handler.setLevel(logging.DEBUG)  # Уровень DEBUG для консоли
 
@@ -119,12 +119,12 @@ async def download_by_link(event):
                     await client.send_file("me", file_path, caption="Скачано @VadimChoi")
                     await event.respond("Медиа успешно загружено и отправлено.")
                 else:
-                    await event.respond("Медиа не найдено в указанном сообщении или не является фото/видео/голосовое сообщение.")
+                    await event.respond("Медиа не найдено в указанном сообщении или не является фото/видео/голосовым сообщением.")
             except Exception as e:
                 await event.respond(f"Ошибка при обработке ссылки: {e}")
                 logger.error(f"Ошибка при обработке ссылки: {e}")
-        except Exception as e:
-            logger.error(f"Ошибка при скачивании по ссылке: {e}")           
+    except Exception as e:
+        logger.error(f"Ошибка при скачивании по ссылке: {e}")
 
 async def main():
     try:
