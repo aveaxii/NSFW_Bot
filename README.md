@@ -11,10 +11,8 @@
 - Telethon (Последняя версия)
 
 # Установка
-```
-git clone https://github.com/VadimChoi/Self-Destructing-Downloader-Enhaced.git
-```
-```
+Скачайте ZIP архив из раздела Releases и распакуйте его. Затем по очереди выполните эти две команды:
+ ```
 cd Self-Destructing-Downloader-Enhaced
 ```
 ```
