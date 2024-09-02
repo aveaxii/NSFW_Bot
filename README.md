@@ -36,7 +36,7 @@ touch .env
 Откройте файл «.env» и скопируйте в него следующую информацию:
 
 ```
-API_ID= API_ID_ЗДЕСЬ
+API_ID=API_ID_ЗДЕСЬ
 API_HASH="API_HASH_ЗДЕСЬ"
 MY_ID=ВАШ_ID
 ```
