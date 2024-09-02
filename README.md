@@ -40,8 +40,9 @@ touch .env
 ```
 API_ID= API_ID_ЗДЕСЬ
 API_HASH="API_HASH_ЗДЕСЬ"
+MY_ID=ВАШ_ID
 ```
-Эти значения можно получить на сайте my.telegram.org.
+Эти значения можно получить на сайте my.telegram.org. ID можно узнать через сторонних ботов либо через веб-версию Telegram
 
 <br>
 
