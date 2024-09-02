@@ -1,5 +1,5 @@
 # Self Destructing Downloader (Enhaced)
-Это робот для загрузки видео и изображений, отправляемых через Telegram, с возможностью самоуничтожения.
+Это робот для загрузки видео, изображений и голосовых сообщений отправляемых через Telegram, с возможностью самоуничтожения.
 
 Возможности робота:
 - Высокая скорость в хранилище
@@ -12,10 +12,10 @@
 
 # Установка
 ```
-git clone https://github.com/VadimChoi/NSFW_Bot.git
+git clone https://github.com/VadimChoi/Self-Destructing-Downloader-Enhaced.git
 ```
 ```
-cd NSFW_Bot-main
+cd Self-Destructing-Downloader-Enhaced
 ```
 ```
 pip install -r requirements.txt
